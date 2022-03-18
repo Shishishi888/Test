@@ -49,13 +49,15 @@ public class IndexController{
             return "login";
         }
         // return "index";
-        // 登录成功，重定向到index页面，防止表单重复提交
-        // return "redirect:/index.html";
+
+        // return "redirect:/index.html"; // 登录成功，重定向到index页面，防止表单重复提交
     }
 
     @GetMapping("/index.html")
-    public String mainPage(HttpSession session, Model model){
-        log.info("当前方法是：{}", "mainPage");
+    public String indexPage(HttpSession session, Model model){
+        log.info("当前方法是：{}", "indexPage");
+
+        // 拦截器
 //        Object loginUser = session.getAttribute("loginUser");
 //        if(loginUser != null){
 //            return "index";

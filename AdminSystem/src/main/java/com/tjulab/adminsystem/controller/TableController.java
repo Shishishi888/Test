@@ -3,6 +3,7 @@ package com.tjulab.adminsystem.controller;
 //import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.tjulab.adminsystem.bean.User;
 //import com.tjulab.adminsystem.service.UserService;
+import com.tjulab.adminsystem.exception.UserTooManyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,9 +27,8 @@ public class TableController {
      * @return
      */
     @GetMapping("/basic_table")
-//    public String basic_table(@RequestParam("a") int a){
-public String basic_table(){
-//        int i = 10 / 0; // 数学运算异常
+    public String basic_table(@RequestParam("a") int a){
+        int i = 10 / 0; // 数学运算异常
         return "table/basic_table";
     }
 
@@ -50,12 +50,12 @@ public String basic_table(){
                 new User("Shishishi", "123456")
                 );
         model.addAttribute("users", users);
-//
-//        // response.sendError
-//
-//        if(users.size() >= 3){ // 设置异常
-//            throw new UserTooManyException();
-//        }
+
+        // response.sendError
+
+        if(users.size() >= 3){ // 设置异常
+            throw new UserTooManyException();
+        }
 
         // 从数据库中查出user表中的用户
 //        List<User> list = userService.list();
